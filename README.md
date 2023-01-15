@@ -56,7 +56,7 @@ git clone https://github.com/MarcosAbreu/BreakfastGenerator.git
 ```
 Go to project folder and open the file `BreakfastGenerator\app\html\index.html` using Visual Studio Code.
 
-Then, run the extension Live Server in this index.html file.
+Then, run the extension Live Server in this `index.html` file.
 
 ## Notes
 
