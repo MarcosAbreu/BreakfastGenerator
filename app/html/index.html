@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title> Breakfast Generator </title>
+        <script src="https://kit.fontawesome.com/1747ed9736.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="../css/style.css">
+        
+        
+    </head>
+    <body> 
+        <div class="recipe-modal-container" id="id-recipe-modal"></div>
+        <form class="form-element">
+            <button id="id-btn-toggle-new-meal" class="btn-toggle-new-meal" type="button">
+                <i class="bi bi-caret-right-fill"></i>
+            </button>
+            <div class="form-container">
+                <h2 class="form-title">Create a new Meal</h2>
+                <label class="form-label" for="id-meal-name-field">Meal Name</label>
+                <input class="form-control" id="id-meal-name-field" type="text" required>
+                <label class="form-label" for="id-meal-type-field">Type of Meal</label>
+                <input class="form-control" id="id-meal-type-field" type="text" required>
+                <label class="form-label" for="id-meal-category-field">Category</label>
+                <select class="form-select" id="id-meal-category-field" required>
+                    <option selected disabled value="">Choose one Group</option>
+                    <option value="Group 1">Group 1</option>
+                    <option value="Group 2">Group 2</option>
+                    <option value="Group 3">Group 3</option>
+                    <option value="Group 4">Group 4</option>
+                </select>
+                <label class="form-label" for="id-meal-src-field">Meal image (the image has to be 1:1 proportion)</label>
+                <input class="form-control" type="file" id="id-meal-src-field" required>
+                <h3 class="form-subtitle">Recipe Informations</h3>
+                <div class="form-recipe-info-grid">
+                    <div class="form-recipe-info">
+                        <label class="form-label" for="id-preparation-field">Preparation Time</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="number" id="id-preparation-field" required>
+                            <span class="input-group-text" id="basic-addon2">Minutes</span>
+                        </div>
+                    </div>
+                    <div class="form-recipe-info">
+                        <label class="form-label" for="id-servings-field">Servings</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="number" id="id-servings-field" required>
+                            <select class="form-select" id="id-meal-measurement-field">
+                                <option selected disabled value="">Choose Measurement</option>
+                                <option value="cup">Cup</option>
+                                <option value="grams">Grams</option>
+                                <option value="kilograms">Kilograms</option>
+                                <option value="liters">Liters</option>
+                                <option value="unity">Unity</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+                <label class="form-label" for="id-add-ing-field">New Ingredient</label>
+                <div class="input-group mb-3">
+                    <input id="id-add-ing-field" type="text" class="form-control" placeholder="Type the ingredient here" aria-label="Ingredient" aria-describedby="id-btn-add-ing">
+                    <button id="id-btn-add-ing" class="btn btn-outline-secondary btn-add" type="button" >Add</button>
+                </div>
+                <label class="form-label" for="id-add-step-field">New Step</label>
+                <div class="input-group mb-3">
+                    <textarea  id="id-add-step-field" class="form-control" placeholder="Type the Step here" aria-label="Steps" aria-describedby="id-btn-add-step" rows="3"></textarea>
+                    <button id="id-btn-add-step" class="btn btn-outline-secondary btn-add" type="button" >Add</button>
+                </div>
+            <button id="id-btn-new-meal" class="btn btn-primary btn-new-meal" type="button">Add New Meal</i></button>    
+            </div>
+            <div class="form-list-container">
+                <div class="form-recipe-ing-grid">
+                    <h3 class="form-subtitle">Ingredients List</h3>
+                    <ul id="id-form-recipe-list" class="list-group form-recipe-list"></ul>
+                </div>
+                <div class="form-recipe-step-container">
+                    <h3 class="form-subtitle">Steps List</h3>
+                    <ul id="id-form-recipe-steps" class="list-group list-group-numbered form-recipe-list form-recipe-steps"></ul>
+                </div>
+            </div>
+        </form>
+        <main>
+            <div class="filter-section">
+                <div class="preparation-container">
+                    <h2 class="subtitle">Preparation Time</h2>
+                    <ul class="preparation-list list-group">
+                        <li class="list-group-item">
+                            <input class="form-check-input mt-0" type="checkbox" name="prep-check" id="fstCheckItem">
+                            <label class="form-check-label" for="fstCheckItem">Super Fast meal (5 min)</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input mt-0" type="checkbox" name="prep-check" id="scnCheckItem">
+                            <label class="form-check-label" for="scnCheckItem">Fast meal (15 min)</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input mt-0" type="checkbox" name="prep-check" id="thdCheckItem">
+                            <label class="form-check-label" for="thdCheckItem">Elaborated meal (30 min)</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="add-meals-container">
+                    <h2 class="subtitle">Add Meals</h2>
+                    <div class="search-container">
+                        <input type="text" class="search-field" placeholder="Search meal">
+                        <div class="autocom-box">
+                        </div>
+                        <div class="search-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <button id="id-generate-button" class="generate-button btn btn-outline-primary">Generate Breakfast</button>
+            </div>
+            <div class="selected-itens-section">
+                <h2 class="selected-itens-subtitle">List of Available Meals</h2>
+                <ul id="id-available-meals-list" class="selected-itens-list list-group">
+                    
+                </ul>
+            </div>
+            <div class="results-section" id="id-results-section">
+                <div class="result-grid" id="id-result-grid"></div>
+            </div>
+        </main>
+        <script type="module" src="../js/controller/script.js"></script>
+    </body>
+    
+    
+    
+</html>
