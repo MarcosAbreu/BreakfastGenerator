@@ -3,7 +3,6 @@
     --secundary: #ffffff;
     --dark: #463b8a;
 }
-
 html{
     height: 100vh;
 }
@@ -11,7 +10,6 @@ body{
     background-color: var(--primary);
     height: 100%;
 }
-
 main{
     width: 100%;
     height: 100%;
@@ -429,7 +427,9 @@ main{
     list-style: disc;
     height: 100%;
 }
+
 /* Custom bootstrap itens color */
+
 .btn-outline-primary{
     border-color: var(--primary);
     color: var(--primary);
@@ -458,5 +458,4 @@ main{
 .form-check-input:checked{
     background-color: var(--primary);
     border-color: var(--primary);
-
 }
