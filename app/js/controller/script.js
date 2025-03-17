@@ -445,8 +445,11 @@ function showBreakfast(arr) {
       `</p>
                     </div>
                     <div class="result-recipe">
-                        <i class="fa-solid fa-receipt"></i>
-                        <a>Recipe</a>
+                        
+                        <a class="result-recipe"> 
+                            <i class="fa-solid fa-receipt"></i> 
+                            Recipe
+                        </a>
                     </div>
                 </div>
             </div>`;
